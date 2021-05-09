@@ -1,4 +1,4 @@
-# Tutorial-Comandos-Slass
+# Tutorial-Comandos-Slash
 Nesse repositório, irei dizer um pouco sobre oque aprendi com slash commands, ensinando a fazer um handler, e alguns comandos.
 
 Para começo de conversa, eu não sei explicar bem, pois nem eu entendo direito, mas vamos começar pelas funções.
