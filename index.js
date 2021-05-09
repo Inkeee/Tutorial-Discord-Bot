@@ -1,18 +1,19 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const fs = require("fs");
+var slash = [];
 
-['slash'].forEach(x => (client[x] = new Discord.Collection()));
-
+const arquivos = fs.readdirSync("./src/slashs").filter((file) =>
+	file.endsWith(".js"));
+	
 client.on("ready", async () => {
   
    for (const files of arquivos) {
      
        const file = require(`./src/slashs/${files}`);
 	  
-	  client.slash.set(file.data.name, file);
-	  
-	  slash.push(file)
-	  
+	     slash.push(file)
+
        await client.api.applications(client.user.id).commands.post({ data: file.data })
    }
   
@@ -40,7 +41,6 @@ client.on("ready", async () => {
       return { ...apiMessage.data, files: apiMessage.files };
    }
 
-}
+})
 
 client.login(process.env.TOKEN);
-
