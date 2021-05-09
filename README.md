@@ -30,14 +30,10 @@ essa função já é para enviar oque tempos ali em cima, vou para de tentar exp
 pulando para oque queremos fazer, os slashs:
 
 ```js
-client.slash.set(file.data.name, file);
-
 await client.api.applications(client.user.id).commands.post({ data: file.data })
 ```
 
-Linha1: usando a coleção que criamos acima, para armazenar os comandos que temos, coisa idiota, não precisa mais eu gosto...
-
-Linha2: Criando na aplicação, os comandos com os itens que temos dentro dos arquivos, só com isso seu comando com / já apareceria, mas daria erro pois não daria nada.
+Criando na aplicação, os comandos com os itens que temos dentro dos arquivos, só com isso seu comando com / já apareceria, mas daria erro pois não daria nada.
 
 <img src="https://i.ibb.co/XXpgnLq/0-BA6-BC50-0135-4285-818-C-3-FDCEAAB928-E.jpg">
 
@@ -47,7 +43,7 @@ client.ws.on('INTERACTION_CREATE', async (i) => {
     if(command) command.run(client, send, i)
 })
 ```
-agora, criando a função da internação, command buscamos o comando pelo seu nome, podemos usar a coleção que temos também, mas no momento usaremos o array que dá na mesma, caso encontrar o comando, ele executa com o paramentos. (Client) o seu bot, (send) função de enviar a mensagem e (i) a intenção que ele está usando.
+agora, criando a função da internação, command buscamos o comando pelo seu nome, caso encontrar o comando, ele executa com o paramentos. (Client) o seu bot, (send) função de enviar a mensagem e (i) a intenção que ele está usando.
 	
 ```js 
 data: {
