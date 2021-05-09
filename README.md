@@ -12,7 +12,7 @@ async function msg(interaction, content) {
 }
 ```
 
-pelo oque é entendo dessa função, usamos ela para cria a mensagem, e conseguirmos enviar coisas eles de strings, como embeds, arquivos, e coisas do tipo, não sei exatamente como envia arquivos. Apenas embeds e mensagens. Mas deve ser como no discord.js normal, só enviar como attachment
+pelo oque é entendo dessa função, usamos ela para cria oque queremos enviar, strings, embeds, arquivos, e coisas do tipo, não sei exatamente como envia arquivos. Apenas embeds e strings. Mas deve ser como no discord.js normal, só enviar como attachment
 
 ```js
 async function send(interaction, content) {
@@ -24,7 +24,7 @@ async function send(interaction, content) {
    });
 }
 ```
-essa função já é para enviar oque tempos ali em cima, vou para de tentar explicar oque não sei, só sei que são importantes essas funções, deixei o nome mais fácil para um entendimento melhor!
+essa função já é para enviar, vou parar de tentar explicar oque não sei.
 
 
 pulando para oque queremos fazer, os slashs:
@@ -33,7 +33,11 @@ pulando para oque queremos fazer, os slashs:
 await client.api.applications(client.user.id).commands.post({ data: file.data })
 ```
 
-Criando na aplicação, os comandos com os itens que temos dentro dos arquivos, só com isso seu comando com / já apareceria, mas daria erro pois não daria nada.
+Criando na aplicação, os comandos com os itens que temos dentro dos arquivos, só com isso seu comando com / já apareceria, mas daria erro pois não tem uma função de retorno.
+
+Os comandos demoram um pouco para aparecer, tente tirar e adicionar o bot para ir mais rápido, e não se esqueça de adicionar as permissões corretas.
+
+<img src="https://i.ibb.co/1Rj4WRx/48168050-E8-D4-4181-BF23-64539-F883025.jpg">
 
 <img src="https://i.ibb.co/XXpgnLq/0-BA6-BC50-0135-4285-818-C-3-FDCEAAB928-E.jpg">
 
@@ -67,7 +71,7 @@ ao usuário usar "/say" as opções que você definir ali em cima mostraram.
 <img src="https://i.ibb.co/y8YtBbs/00-E853-A1-853-A-4-C81-AC9-F-A971832-E5-C82.jpg">
 
 como na imagem mostra, o text que criamos ali.
-description mostra uma descrição doque esse requerimento é, ou qualquer coisa que você queira.
+description mostra uma descrição doque esse requerimento é, ou qualquer coisa que você queira dizer;
 required, siginifica se é uma opção opcional, ou não.
 type é o tipo de item que text vai ser, não sei exatamente todos, mas usaremos por enquanto o 3 que é string 
 
