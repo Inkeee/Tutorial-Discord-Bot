@@ -7,7 +7,7 @@ client.on("ready", async () => {
   
    for (const files of arquivos) {
      
-       const file = require(`./src/slash/${files}`);
+       const file = require(`./src/slashs/${files}`);
 	  
 	  client.slash.set(file.data.name, file);
 	  
