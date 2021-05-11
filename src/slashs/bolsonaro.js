@@ -1,0 +1,139 @@
+const Discord = require("discord.js")
+ Canvas, emojis, colors, parse, titles, Caxinha} = require("../exports.js");
+  
+function isCustomEmoji(emoji) {
+  return emoji.split(":").length == 1 ? false : true;
+}
+  
+module.exports = {
+  data: {
+    name: "bolsonaro",
+    description: "Faça um meme do Bolsonaro",
+   	options: [
+   	  {
+	      name: "link", 
+	      description: "envie um link para colocar na imagem",
+	      type: 3,
+	      required: false
+  	  },
+  	  {
+	      name: "emoji-discord", 
+	      description: "envie um emoji padrão para usar na imagem",
+	      type: 3,
+	      required: false
+  	  },
+  	  {
+	      name: "emoji-personalizado", 
+	      description: "envie um emoji personalizado para usar na imagem",
+	      type: 3,
+	      required: false
+  	  },
+  	  {
+	      name: "user", 
+	      description: "mencione alguem para para colocar na imagem",
+	      type: 6,
+	      required: false
+  	  },
+  	  {
+	      name: "id", 
+	      description: "Use o id de alguem para colocar na imagem",
+	      type: 3,
+	      required: false
+  	  }
+  	],
+  },
+  run: async (client, send, i) => {
+    
+    var options = i.data.options
+    
+    var find = (!options ? true : false)
+    
+    const embed_err = new Discord.MessageEmbed()
+     .setTitle("🤔 como usar?")
+     .setDescription(`**🔷com menção\n/bolsonaro @nonô\n🔸 com emoji\n/bolsonaro 🐔\n🔹 com link\n/bolsonaro \`https://nono.imagem.png\`\n🔸 com arquivos do canal\n/bolsonaro**`)
+     .setColor("RED")
+    
+    if(find === true) {
+      
+      var messages = await client.channels.cache.get(i.channel_id).messages.fetch()
+    
+      var lastAttach = messages.sort((a, b) => b.createdTimestamp - a.createdTimestamp).filter((m) => m.attachments.size > 0).first();
+
+      if(!lastAttach) return await send(i, embed_err)
+    
+      var link = lastAttach.attachments.first().url
+      
+    } else {
+      
+      var result = options.find((o, i) => i === 0);
+      
+      var type = result.name;
+      
+      if(type === "link") {
+        
+        var regex = regex = /(http)?s?:?(\/\/[^"']*\.(?:jpg|jpeg|png))/i
+
+        if(!regex.exec(result.value.split(" ")[0]) ) return await send(i, embed_err)
+    
+        var link = result.value.split(" ")[0]
+        
+      } else if(type === "emoji-discord") {
+      
+        var emoji = result.value.split(" ")[0]
+        
+        var link = parse(emoji, { assetType: "png" })[0].url;
+        
+      } else if(type === "emoji-personalizado") {
+      
+        var emoji = result.value.split(" ")[0]
+        
+        if(isCustomEmoji(emoji) || client.emojis.cache.get(emoji) || client.emojis.cache.find(x => x.name === emoji)) {
+        
+          if(client.emojis.cache.get(emoji)) {
+            
+            var id = client.emojis.cache.get(emoji).id
+          
+          } else if(client.emojis.cache.find(e => e.name === emoji)) {
+            
+            var id = client.emojis.cache.find(e => e.name === emoji).id
+            
+          } else {
+            
+            var id = emoji.split(":")[2].replace(">", "")
+        
+          }
+        
+        }
+      
+      if(!id) return await send(i, embed_err)
+    
+      var link = `https://cdn.discordapp.com/emojis/${id}.png`
+        
+      } else if(type === "id") {
+        
+        var user = client.users.cache.get(result.value.split(" ")[0])
+        
+        if(!user) return await send(i, embed_err)
+        
+         var link = user.displayAvatarURL({format: "png", dynamic: false, size: 1024})
+         
+      } else if(type === "user") {
+        
+        var user = client.users.cache.get(result.value)
+        
+        if(!user) return await send(i, embed_err)
+        
+        var link = user.displayAvatarURL({format: "png", dynamic: false, size: 1024})
+        
+      }
+    
+    }
+    
+    let image = await Caxinha.canvas.bolsonaro(link);
+
+    let attachment = new Discord.MessageAttachment(image, "nonô-bolsonaro.png")
+    
+    return await send(i, attachment)
+    
+  }
+}
