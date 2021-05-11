@@ -1,6 +1,8 @@
-const Discord = require("discord.js")
- Canvas, emojis, colors, parse, titles, Caxinha} = require("../exports.js");
-  
+const Discord = require("discord.js");
+const Canvas = require("canvas");
+const Caxinha = require("caxinha");
+const { parse } = require("twemoji-parser");
+
 function isCustomEmoji(emoji) {
   return emoji.split(":").length == 1 ? false : true;
 }
