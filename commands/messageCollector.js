@@ -50,28 +50,28 @@ module.exports.run = async (client, message, args, database) => {
       if(num === 1) {
          num = 2
          ref.set({name: m.content, id: message.author.id})
-         message.channel.send(embedidade)
+         return message.channel.send(embedidade)
       }
       if(num === 2) {
          if(isNaN(parseInt(m.content))) return  message.channel.send(embederr)
          ref.update({idade: m.content})
          num = 3
-         message.channel.send(embeddesc)
+         return message.channel.send(embeddesc)
       } 
       if(num === 3) {
          ref.update({desc: m.content})
          num = 4
-         message.channel.send(embedniver)
+         return message.channel.send(embedniver)
       }
       if(num === 4) {
          ref.update({niver: m.content})
          num = 5
-         message.channel.send("deseja enviar mesmo? (sim/s/yes/y) ou cancel para cancelar")
+         return message.channel.send("deseja enviar mesmo? (sim/s/yes/y) ou cancel para cancelar")
       }
       if(num === 5) {
          if(m.content === "y" || m.content === "yes" || m.content === "sim" || m.content === "s")  {   
-            ref.once("value").then(function (db) {
-              const fim = `nome: ${db.val().name}\nid: ${db.val().id}\nprefix: ${db.val().prefix}\ndono: ${message.author}\ndesc: ${db.val().desc}`
+            ref.once("value").then(function (dba) {
+              const fim = `nome: ${dba.val().name}\nidade: ${dba.val().idade}\ndescricão: ${dba.val().desc}\nuser: ${message.author}\nnascimento: ${dba.val().niver}`
               num = false
               return message.channel.send("enviado")
             })
