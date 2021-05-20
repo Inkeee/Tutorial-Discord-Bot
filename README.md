@@ -10,3 +10,5 @@ Lista de tutoriais:
 - alguns comandos em slash como: [say, bolsonaro] - (comando de bolsonaro não pega, pois ainda não descobri como enviar arquivos, atualizarei quando possível!)
 
 Com o tempo adicionarei mais exemplos, só uso firebase nos comandos. 👍
+
+Nota: o comando de bolsonaro tá com alguns erros na coleta de emojis e links, mas eu já arrumei em meu bot nos comandos normais, mas como não pega em slash, deixei como está, quando descobrir como enviar, junto arrumo esses bugs.
