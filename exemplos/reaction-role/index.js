@@ -1,5 +1,5 @@
 const fs = require("fs")
-const react = JSON.parse(fs.readFileSync('./jsons/react.json', 'utf-8'));
+const react = JSON.parse(fs.readFileSync('./react.json', 'utf-8'));
 const Discord = require("discord.js")
 const client = new Discord.Client()
 
