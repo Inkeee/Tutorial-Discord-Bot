@@ -40,7 +40,7 @@ Nesse json que puxamos, terá todas informações que usaremos, a estrutura do j
 Sempre, terá que ter essas informações:
 canal = id do canal que a mensagem está!
 mensagem = id da mensagem que vai coletar as reações
-emoji1 = primeiro emoji a ser usado (emoji direto, apenas emojis padrões)
+emoji1 = primeiro emoji a ser usado (coloque o emoji direto igual acima, apenas emojis padrões)
 role1 = primeiro cargo a ser usado (id do cargo)
 
 emoji1 = role1,
@@ -52,7 +52,7 @@ E assim até o infinito, sempre começa no 1, e não pode pular números.
 você pode setar quantos objetos quiser no json, um objeto para cada mensagem, se quiser fazer 10 objetos para 10 mensagem e 1 cargo para cada você pode que não vai dar erro, ou também, pode colocar 1 objetos com as 10 reações, mas isso limitaria a mensagem para apenas uma!
 então, isso vai da criatividade de cada um.
 
-Nota: não abuse de colocar 20 cargos em uma mensagem só, quanto mais você colocar mais pode demorar, para enviar isso, coloque sempre 5/8 reações por mensagem, para ficar um número legal, que envia lag, e funciona direitinho.
+Nota: não abuse de colocar 20 cargos em uma mensagem só, quanto mais você colocar mais pode demorar, para enviar isso coloque sempre 5/8 reações por mensagem, para ficar um número legal que não vai lagar, e vai funcionar direitinho.
 
 ```js
 
