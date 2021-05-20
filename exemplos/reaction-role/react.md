@@ -119,22 +119,24 @@ result.forEach((x, i) => {
       
   if(p.t === "MESSAGE_REACTION_REMOVE") membro.roles.remove(role)
     
-})```
+})
+```
 
 
-um for each, com todos emojis, apenas para descobrimos qual cargo ele quer receber ou remover,
-i é a posição do emoji no map que criamos, então se na lista tem 10 emojis, o for each vai tentar 10 vezes
+Depois faremos um loop com forEach(), para verificar todos emojis, apenas para descobrimos qual cargo ele quer receber ou remover, "i" é a posição do emoji no mapa que fizermos que criamos, então se na lista tem 10 emojis, o loop vai tentar 10 vezes
 
 como o cargo sempre é a mesma posição do emoji, apenas descobrindo o emoji, ja sabermos o cargo também.
 
+Quando as informações baterem, ele vai dar o cargo que definimos ou remover-ló dependendo do evento que foi emitido.
 
-o for each vai rodar 10 vezes no exemplo de 10, então ele tentará emoji1, emoji2, emoji3... até encontrar a opções que encaixa e quando encontrar eles apenas verifica se foi um evento de add ou remove, e leva o resultado que queremos:
+sem cargo
 
-sem cargo:
 <img src="https://i.ibb.co/8sTG5LJ/9-C1-BE800-D8-DD-48-F1-8079-CFBEF39-AE16-E.jpg">
 
-resultado:
+resultado
+
 <img src="https://i.ibb.co/JcTmq2f/C792-B8-E9-CA5-E-4-AAE-9-BDE-05776-A35-F369.jpg">
 
-com cargos:
+com cargos
+
 <img src="https://i.ibb.co/qCrKSmp/4-C188599-90-B1-4699-A030-1-D7-E377-A9-BB1.jpg">
