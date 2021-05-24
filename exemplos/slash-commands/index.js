@@ -36,8 +36,6 @@ client.on("ready", async () => {
 	 }, files
       });
    }
-}
-
 })
 
 client.login(process.env.TOKEN);
