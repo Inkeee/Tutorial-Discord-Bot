@@ -30,3 +30,8 @@ Envio direto:
 
 Não adianta tentar tirar o content do envio direto, ele da erro sem, e para não colocar algo aleatório, coloquei a menção do usuário, você pode colocar qualquer string ali que vai pegar, caso você pegou o código antigo, antes de eu arrumar esse comando, troque a função send da index, modifiquei um pouco (foi difícil arrumar) mas agora ela pega.
 Novos comandos viram, como o de Hug, um exemplo de uso de menção. 
+
+
+Não vou explicar muito como coleta as imagens, porque é apenas coisas bestas, que dá para descobrir na net.
+
+Não ligue para quantidade de try, mas se tirar da erro, pois sempre pode ser um emoji inválido, ou qualquer outra coisa.
