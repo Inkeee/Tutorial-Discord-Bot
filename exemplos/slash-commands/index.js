@@ -26,20 +26,17 @@ client.on("ready", async () => {
    })
 	 
    async function send(interaction, content) {
+      const { data, files } = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
+      .resolveData().resolveFiles();
+	  
       return client.api.interactions(interaction.id, interaction.token).callback.post({
          data: {
             type: 4,
-	    data: await msg(interaction, content),
-	 },
+	    data: { ...data, files: files }
+	 }, files
       });
    }
-
-   async function msg(interaction, content) {
-      const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
-         .resolveData().resolveFiles();
-	
-      return { ...apiMessage.data, files: apiMessage.files };
-   }
+}
 
 })
 
