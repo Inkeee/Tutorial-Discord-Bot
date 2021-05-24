@@ -7,6 +7,10 @@ function isCustomEmoji(emoji) {
   return emoji.split(":").length == 1 ? false : true;
 }
   
+function isCustomEmoji(emoji) {
+  return emoji.split(":").length == 1 ? false : true;
+}
+  
 module.exports = {
   data: {
     name: "bolsonaro",
@@ -44,7 +48,7 @@ module.exports = {
   	  }
   	],
   },
-  run: async (client, send, i) => {
+  run: async (send, i) => {
     
     var options = i.data.options
     
@@ -52,7 +56,7 @@ module.exports = {
     
     const embed_err = new Discord.MessageEmbed()
      .setTitle("🤔 como usar?")
-     .setDescription(`**🔷com menção\n/bolsonaro @nonô\n🔸 com emoji\n/bolsonaro 🐔\n🔹 com link\n/bolsonaro \`https://nono.imagem.png\`\n🔸 com arquivos do canal\n/bolsonaro**`)
+     .setDescription(`**🔸 com menção\n/bolsonaro @nonô\n🔹 com emoji\n/bolsonaro 🐔\n🔸 com link\n/bolsonaro \`https://nono.imagem.png\`\n🔷 com arquivos do canal\n/bolsonaro**`)
      .setColor("RED")
     
     if(find === true) {
@@ -83,33 +87,31 @@ module.exports = {
       
         var emoji = result.value.split(" ")[0]
         
-        var link = parse(emoji, { assetType: "png" })[0].url;
+        try {
+          var link = parse(emoji, { assetType: "png" })[0].url;
+        } catch(err) {
+          return await send(i, embed_err)
+        }
         
       } else if(type === "emoji-personalizado") {
       
-        var emoji = result.value.split(" ")[0]
+        var emojis = result.value.split(" ")[0]
         
-        if(isCustomEmoji(emoji) || client.emojis.cache.get(emoji) || client.emojis.cache.find(x => x.name === emoji)) {
-        
-          if(client.emojis.cache.get(emoji)) {
-            
-            var id = client.emojis.cache.get(emoji).id
-          
-          } else if(client.emojis.cache.find(e => e.name === emoji)) {
-            
-            var id = client.emojis.cache.find(e => e.name === emoji).id
-            
-          } else {
-            
-            var id = emoji.split(":")[2].replace(">", "")
-        
-          }
-        
-        }
-      
-      if(!id) return await send(i, embed_err)
+        if(isCustomEmoji(emojis)) {
     
-      var link = `https://cdn.discordapp.com/emojis/${id}.png`
+          var emoji = emojis.split(":")
+    
+          try {
+            var id = client.emojis.cache.find(x => x.id === emoji[2].replace(">", "")).id
+          } catch(err) {
+            return await send(i, embed_err)
+          }
+          
+        }
+        
+        if(!id) return await send(i, embed_err)
+    
+        var link = `https://cdn.discordapp.com/emojis/${id}.png`
         
       } else if(type === "id") {
         
@@ -130,12 +132,14 @@ module.exports = {
       }
     
     }
-    
+  
     let image = await Caxinha.canvas.bolsonaro(link);
+    
+    let attachment = new Discord.MessageAttachment(image, "nonô-bolsonaro.png");
 
-    let attachment = new Discord.MessageAttachment(image, "nonô-bolsonaro.png")
-    
-    return await send(i, attachment)
-    
+    return await send(i, { 
+      content: `${client.users.cache.get(i.member.user.id)}`, 
+      files: [attachment]
+    })
   }
 }
