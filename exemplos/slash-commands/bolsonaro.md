@@ -25,10 +25,11 @@ Envio direto:
 ```js
  var attachment = new Discord.MessageAttachment(image, `bolsonaro.png`);
  
- return await send(i, attachment)
+ return await send(i, { 
+    content: `${client.users.cache.get(i.member.user.id)}`, 
+    files: [attachment]
+ })
 ```
 
-retorno que o corpo da mensagem é inválido, ou que a mensagem precisar ter conteúdo para ser enviada.
-
-tentei alterar algumas coisas da função de envio, e os comandos pararam de responder.
-a qualquer descoberta, atualizarei aqui! 
+Não adianta tentar tirar o content, ele da erro sem, e para não colocar algo aleatório, coloquei a menção do usuário, você pode colocar qualquer string ali, que vai pegar, caso você utilizou antes eu ter arrumando esse comando, altere a função send da index, modifiquei um pouco (foi difícil arrumar) mas agora ela pega.
+Novos comandos viram, como o de Hug, um exemplo de uso de menção. 
