@@ -16,9 +16,6 @@ Por embed:
     
  return await send(i, embed)
 ```
-retorno: 
-
-<img src="https://i.ibb.co/dQJYCD6/BB83-DF62-F433-4445-95-D3-8-B475-B95-E5-D7.jpg">
 
 Envio direto:
 
@@ -31,5 +28,5 @@ Envio direto:
  })
 ```
 
-Não adianta tentar tirar o content, ele da erro sem, e para não colocar algo aleatório, coloquei a menção do usuário, você pode colocar qualquer string ali, que vai pegar, caso você utilizou antes eu ter arrumando esse comando, altere a função send da index, modifiquei um pouco (foi difícil arrumar) mas agora ela pega.
+Não adianta tentar tirar o content do envio direto, ele da erro sem, e para não colocar algo aleatório, coloquei a menção do usuário, você pode colocar qualquer string ali que vai pegar, caso você pegou o código antigo, antes de eu arrumar esse comando, troque a função send da index, modifiquei um pouco (foi difícil arrumar) mas agora ela pega.
 Novos comandos viram, como o de Hug, um exemplo de uso de menção. 
