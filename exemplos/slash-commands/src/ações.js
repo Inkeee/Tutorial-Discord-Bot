@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const nekos = require('nekos.life');
+const neko = new nekos();
 
 module.exports = {
   data: {
@@ -75,7 +77,7 @@ module.exports = {
   	  }, 
   	]
   },
-  run: async (send, i) => {
+  run: async (client, send, i) => {
 
   var options = i.data.options
   var result = options.find((o, i) => i === 0);
@@ -83,9 +85,9 @@ module.exports = {
   var type_command = result.name;
       
   const embed_err = new Discord.MessageEmbed()
-   .setTitle(titles.COMO_USAR)
+   .setTitle("🤔 como usar?")
    .setDescription(`**🔸 com menção\n/ações ${type_command} @nonô\n🔹 com id\n/ações ${type_command} [user_id]\nNota: Não pode ser você mesmo!**`)
-   .setColor(colors.ERRO)
+   .setColor("RED")
      
   if(type_command === "beijar") {
     var name = "beijou"
@@ -134,7 +136,7 @@ module.exports = {
       
   const embed = new Discord.MessageEmbed()
    .setTitle(`**⭐️ ${type_command}**`)
-   .setColor(colors.COMUM)
+   .setColor("#bbe6f9")
    .setDescription(`**${member} ${name} ${member2}**`)
    .setImage(link.url)
   
