@@ -48,7 +48,7 @@ module.exports = {
   	  }
   	],
   },
-  run: async (send, i) => {
+  run: async (client, send, i) => {
     
     var options = i.data.options
     
