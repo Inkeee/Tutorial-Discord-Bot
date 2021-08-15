@@ -77,17 +77,16 @@ module.exports = {
   	  }, 
   	]
   },
-  run: async (client, send, i) => {
+  run: async (client, i) => {
 
-  var options = i.data.options
-  var result = options.find((o, i) => i === 0);
+  var options = i.options
   
-  var type_command = result.name;
-      
+  var type_command = options._subcommand; 
+  
   const embed_err = new Discord.MessageEmbed()
-   .setTitle("🤔 como usar?")
-   .setDescription(`**🔸 com menção\n/ações ${type_command} @nonô\n🔹 com id\n/ações ${type_command} [user_id]\nNota: Não pode ser você mesmo!**`)
-   .setColor("RED")
+   .setTitle(titles.COMO_USAR)
+   .setDescription(`**${emojis.CUBO_LARANJA} com menção\n${emojis.CUBO_AZUL} /ações ${type_command} @nonô\n${emojis.CUBO_LARANJA} com id\n${emojis.CUBO_AZUL} /ações ${type_command} [user_id]\n${emojis.CUBO_LARANJA} Nota: Não pode ser você mesmo!**`)
+   .setColor(colors.ERRO)
      
   if(type_command === "beijar") {
     var name = "beijou"
@@ -105,42 +104,40 @@ module.exports = {
     var name = "bateu em"
     var link = await neko.sfw.cuddle()
   }
-    
-  var data = i.data.options[0].options
   
-  if(!data) return await send(i, embed_err)
+  var find = options._hoistedOptions[0]
   
-  var find = data.find((o, i) => i === 0);
-    
+  if(!find) return await i.reply({ embeds: [embed_err], ephemeral: true });
+  
   if(find.name === "id") {
     
     var user = client.users.cache.get(find.value.split(" ")[0])
       
-    if(!user) return await send(i, embed_err)
+    if(!user) return await i.reply({embeds: [embed_err], ephemeral: true });
         
   } else if(find.name === "user") {
     
     var user = client.users.cache.get(find.value)
         
-    if(!user) return await send(i, embed_err)
+    if(!user) return await i.reply({embeds: [embed_err], ephemeral: true });
       
   }
     
-  if(!user) return await send(i, embed_err)
-      
+  if(!user) return await i.reply({embeds: [embed_err], ephemeral: true });
+        
   let member = i.member.user.username
   
   let member2 = user.username
   
-  if(member === member2) return await send(i, embed_err)
-      
+  if(member === member2) return await i.reply({embeds: [embed_err], ephemeral: true });
+  
   const embed = new Discord.MessageEmbed()
    .setTitle(`**⭐️ ${type_command}**`)
-   .setColor("#bbe6f9")
+   .setColor(colors.COMUM)
    .setDescription(`**${member} ${name} ${member2}**`)
    .setImage(link.url)
   
-  return await send(i, embed)
+  return await i.reply({embeds: [embed], ephemeral: false });
       
   }
 }
