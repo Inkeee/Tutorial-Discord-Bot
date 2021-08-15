@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args, database) => {
 
    const filtro = m => m.author.id === message.author.id
     
-   const coletor = new Discord.MessageCollector(message.channel, filtro, {max: 50, time: 1000 * 300,})
+   const coletor = new Discord.MessageCollector(message.channel,{ filter: filtro, max: 50, time: 1000 * 300,})
 
    var num = 1
 
@@ -42,7 +42,7 @@ module.exports.run = async (client, message, args, database) => {
 
       if(num === false) return;
 
-      if(m.content.toLowerCase() === "cancelar" || m.content.toLowerCase() === "cancel") {
+      if(["cancelar", "c", "cancel"].includes(m.content.toLowerCase())) {
          num = false
          ref.remove()
          return message.channel.send(embedcancel)
