@@ -51,22 +51,22 @@ Pense como um json bosta 🤡, mas no exemplo abaixo você pode começar direto 
 
 ```json 
 Comandos: {
-  type: 2
+  type: 2,
   Economia: {
-     type: 1
+     type: 1,
      Daily: { 
-     }
+     },
      Coins: {
-     }
+     },
      Work: {
      }
-  }
+  },
   Diversao: {
-     type: 1
+     type: 1,
      Beijar: {
-     }
+     },
      Abracar: {
-     }
+     },
      Tapa: {
      }
   }
