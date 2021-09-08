@@ -50,24 +50,24 @@ type 1 = subComando
 Pense como um json bosta 🤡, mas no exemplo abaixo você pode começar direto na categoria economia por exemplo, não precisa ter um subgrupo para fazer subcomandos!
 
 ```json 
-Comandos: {
-  type: 2,
-  Economia: {
-     type: 1,
-     Daily: { 
+"Comandos": {
+  "type": 2,
+  "Economia": {
+     "type": 1,
+     "Daily": { 
      },
-     Coins: {
+     "Coins": {
      },
-     Work: {
+     "Work": {
      }
   },
-  Diversao: {
-     type: 1,
-     Beijar: {
+  "Diversao": {
+     "type": 1,
+     "Beijar": {
      },
-     Abracar: {
+     "Abracar": {
      },
-     Tapa: {
+     "Tapa": {
      }
   }
 }
