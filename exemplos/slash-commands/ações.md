@@ -41,41 +41,45 @@ options: [
 ]
 ```
 
-A divisão de um slash command em sub commands, é até bem simples, ela consiste apenas em vc criar options type 2 para um grupo de subcomando ou type 1 que são subcomandos
+A divisão de um slash command em sub grupos/comandos é até bem simples!
+Ela consiste apenas em você criar options dentro de options
 
-type 2
+type 2 = subgrupo
+type 1 = subComando
 
-- Comando:
-teste
-- subgrupos
-canvas
-ações
-Usrilidade
-- subcomandos canvas 
-bolsonaro
-drake
-- subcomandos acoes
-tug
-tapa 
-- subcomandos utilidades 
-ping
-say
+Pense como um json bosta 🤡, mas no exemplo abaixo você pode começar direto na categoria economia por exemplo, não precisa ter um subgrupo para fazer subcomandos!
 
-type 1 não terá os subgrupos
+```json 
+Comandos: {
+  type: 2
+  Economia: {
+     type: 1
+     Daily: { 
+     }
+     Coins: {
+     }
+     Work: {
+     }
+  }
+  Diversao: {
+     type: 1
+     Beijar: {
+     }
+     Abracar: {
+     }
+     Tapa: {
+     }
+  }
+}
+```
 
-- comando
-teste
-- subcomandos
-tug
-tapa 
 
-Olhando o tamanho, trabalhar com subgrupo é chato 👍
-são muitas possibilidades em um comando só, vai ficar enorme, então só recomendo fazer type 1
+Subgrupo é chato 👍, são muitas possibilidades em um comando só, fica enorme, então só recomendo fazer type 1 que são sub comandos.
 
-não sei se tem algo para explicar sobre isso, pois é mais options dentro de options 
 
 type 6 significa menção, não tem oque explicar também sobre as menções, ela retorna um id, 
-
+type 3 significa string
+required nas options são options necessárias, em sub comando não é muito bom ativar.
 
 ```js
 
@@ -124,10 +128,5 @@ Lembrando, isso só vale para comandos simples, que tem poucas mudanças, se voc
       
   }
 ```
-para coletar as as informações das menções ou id, é basicamente a mesma coisa, mas você tem que adentrar, em options que está dentro do options.
 
-Estava dando erro sem 0 [0], daí eu pensei que como era um array, coloquei para ver e pegou 🤡
-mas basicamente tu entra para um comando normal, a partir disso, o retorno é igual de um comando normal.
-
-com isso você apenas pega a variável find do código, e verifica se está tudo correto para executar o comando!
 
