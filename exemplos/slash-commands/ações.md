@@ -83,9 +83,10 @@ required nas options são options necessárias, em sub comando não é muito bom
 
 ```js
 
-  var options = i.data.options
-  var result = options.find((o, i) => i === 0);
 
+  var options = i.options
+  var type_command = options._subcommand; 
+     
   if(type_command === "beijar") {
     var name = "beijou"
     var link = await neko.sfw.kiss()
@@ -102,31 +103,15 @@ required nas options são options necessárias, em sub comando não é muito bom
     var name = "bateu em"
     var link = await neko.sfw.cuddle()
   }
-```
-
-agora, parece apenas um comando normal, mas basicamente antes buscávamos as options para coletar as informações que vai usar, agora ela não retorna mais só as informações, retorna o subcomando que foi usado, então procuramos com ifs para ver qual imagem usar no comando.
-Lembrando, isso só vale para comandos simples, que tem poucas mudanças, se você fazer um comando com categoria canvas por exemplo, você tem que fazer cada comando dentro desses ifs, mas como esse comando só muda a imagem e a palavra no meio, eu apenas defini qual usar-las dentro desses ifs, para não prolongar o código, fazer cada comando dentro do if ficaria a mesma coisa, mas quando der tenta não fazer isso, fica muito grande. Mas tem casos que vão precisar ser feito!
-
-```js
-  var data = i.data.options[0].options
   
-  if(!data) return await send(i, embed_err)
+  var find = options._hoistedOptions[0]
   
-  var find = data.find((o, i) => i === 0);
-    
-  if(find.name === "id") {
-    
-    var user = client.users.cache.get(find.value.split(" ")[0])
-      
-    if(!user) return await send(i, embed_err)
-        
-  } else if(find.name === "user") {
-    
-    var user = client.users.cache.get(find.value)
-        
-    if(!user) return await send(i, embed_err)
-      
-  }
-```
+  if(!find) return await i.reply({ embeds: [embed_err], ephemeral: true });
 
+```
+Para reduzir o código, ou fazendo da melhor forma, apenas mudamos o name e a imagem com os ifs e enviamos o embed com o resultado
+
+Na variável find vemos como pega uma options dentro de outra options, 
+
+E para enviar uma mensagem invisível, apenas ativamos o `ephemeral: true` nas options do reply 
 
