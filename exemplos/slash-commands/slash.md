@@ -1,33 +1,6 @@
 # Tutorial-Comandos-Slash
 Nesse repositório, irei dizer um pouco sobre oque aprendi com slash commands, ensinando a fazer um handler, e alguns comandos.
 
-Para começo de conversa, eu não sei explicar bem, pois nem eu entendo direito, mas vamos começar pelas funções.
-
-```js
-async function msg(interaction, content) {
-   const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
-     .resolveData().resolveFiles();
-	
-   return { ...apiMessage.data, files: apiMessage.files };
-}
-```
-
-pelo oque é entendo dessa função, usamos ela para cria oque queremos enviar, strings, embeds, arquivos, e coisas do tipo, não sei exatamente como envia arquivos. Apenas embeds e strings. Mas deve ser como no discord.js normal, só enviar como attachment
-
-```js
-async function send(interaction, content) {
-   return client.api.interactions(interaction.id, interaction.token).callback.post({
-      data: {
-         type: 4,
-	 data: await msg(interaction, content),
-      },
-   });
-}
-```
-essa função já é para enviar, vou parar de tentar explicar oque não sei.
-
-
-pulando para oque queremos fazer, os slashs:
 
 ```js
 await client.api.applications(client.user.id).commands.post({ data: file.data })
@@ -73,19 +46,7 @@ ao usuário usar "/say" as opções que você definir ali em cima mostraram.
 como na imagem mostra, o text que criamos ali.
 description mostra uma descrição doque esse requerimento é, ou qualquer coisa que você queira dizer;
 required, siginifica se é uma opção opcional, ou não.
-type é o tipo de item que text vai ser, não sei exatamente todos, mas usaremos por enquanto o 3 que é string 
-
-```js
-run: async (client, send, i) => {
-   var args = i.data.options
-   var texto = args.find(args => args.name.toLowerCase() === "text").value;
-	  
-   await send(i, texto)
-    
-}
-```
-run recebe a função que vamos enviar, i.data.options retorna um array com objetos com as opções criadas, para coletar nosso texto que pedimos, apenas damos um find no que definimos (text) e pegamos seu valor com value, e damos um send(i, texto) i = intenção que vai responder, texto = texto que vai se enviado.
-você pode enviar um embed, criando um embed acima e enviando no lugar do texto.
+type é o tipo de item que text vai ser, não lembro agora quais são mas em ações.md tem mais sobre
 
 <img src="https://i.ibb.co/L9c9Pgn/8-D5-D274-E-EAD5-4394-BDA5-FD437-E3999-D3.jpg">
 
