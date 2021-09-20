@@ -6,7 +6,9 @@ const { obj, cmd, alias, getWin, verify } = require("./utils/getcmd.js"); //pega
 
 ['commands', 'aliases', 'slash', 'events'].forEach(x => (client[x] = new Discord.Collection())); // criando as coleções que usaremos
 
-const { setCommands } = require("./utils/command.js") //pegando a função dos slashs
+const { setCommands } = require("./utils/command.js") //pegando a função de setar os comandos na coleção de comandos
+
+const { permission } = require("./utils/permissions.js") //pegando a função de verificar permissões
 
 const app = express();
 
@@ -48,7 +50,11 @@ client.on("messageCreate", (message) => {
     return message.reply({content: `**Você esta tentando dizer ${getWin(obj)[0]}?**` });
     //enviando o melhor resultado 
   }
-  
+
+  var perm = permission(arquivocmd.config.permissions, message)
+  //executando a função 
+  if(perm.err) return message.reply({ content: `**${perm.text}**`,  allowedMentions: { repliedUser: false }}) 
+  //caso retorne true, ele responde com todas permissões necessárias
   arquivocmd.run(client, message, args);
   //executando o comando
 })
