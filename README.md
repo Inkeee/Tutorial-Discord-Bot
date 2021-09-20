@@ -11,3 +11,5 @@ Lista de tutoriais:
 
 Com o tempo adicionarei mais exemplos, só uso firebase nos comandos. 👍
 
+A índex está toda comentada, e é bem simples de entender
+
