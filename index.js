@@ -3,7 +3,8 @@ const Discord = require("discord.js")
 const intents = new Discord.Intents(32767); //definindo todas intents
 const client = new Discord.Client({ intents });
 const { obj, cmd, alias, getWin, verify } = require("./utils/getcmd.js"); //pegando as funções para descobrir os comandos digitados errados
-
+const { reaction } = require("./utils/reaction.js"); //pegando as funções para o reaction role
+const react = require("./utils/react.json");//pegando as informações do reaction role 
 ['commands', 'aliases', 'slash', 'events'].forEach(x => (client[x] = new Discord.Collection())); // criando as coleções que usaremos
 
 const { setCommands } = require("./utils/command.js") //pegando a função de setar os comandos na coleção de comandos
@@ -24,6 +25,10 @@ client.on("ready", () => {
   console.log("Bot online")
   setCommands(client)
 })
+
+client.on('raw', async (p) => {
+  reaction(p, client, react) 
+}
 
 client.on("messageCreate", (message) => {
  
