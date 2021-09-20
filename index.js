@@ -9,6 +9,7 @@ const react = require("./utils/react.json");//pegando as informações do reacti
 
 const { setCommands } = require("./utils/command.js") //pegando a função de setar os comandos na coleção de comandos
 
+const { loadSlash } = require("./utils/command.js") //pegando a função dos slashs
 const { permission } = require("./utils/permissions.js") //pegando a função de verificar permissões
 
 const app = express();
@@ -24,6 +25,7 @@ app.listen(3000, () => {
 client.on("ready", () => {
   console.log("Bot online")
   setCommands(client)
+  loadSlash(client)
 })
 
 client.on('raw', async (p) => {
