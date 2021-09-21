@@ -4,6 +4,8 @@ function permission(permissions, message) {
   var user = [] //array de permissões de users
   var bot = [] //array de permissões do bot
   
+  if(!permissions) return;
+
   permissions.forEach(x => {
   //forEach para separar cada permissão
     if(x.split("_")[0] === "USER") {
