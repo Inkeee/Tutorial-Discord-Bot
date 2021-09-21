@@ -11,7 +11,7 @@ async function loadSlash(client) {
 
   for (const files of arquivos) {
 
-      const file = require(`./slashs/${files}`);
+      const file = require(`../slashs/${files}`);
 	  
       slash.push(file)
 
