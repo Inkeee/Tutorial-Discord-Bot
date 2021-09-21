@@ -7,7 +7,7 @@ const { reaction } = require("./utils/reaction.js"); //pegando as funções para
 const react = require("./utils/react.json");//pegando as informações do reaction role 
 ['commands', 'aliases', 'slash', 'events'].forEach(x => (client[x] = new Discord.Collection())); // criando as coleções que usaremos
 
-const { setCommands } = require("./utils/command.js") //pegando a função de setar os comandos na coleção de comandos
+const { setCommands } = require("./utils/slash.js") //pegando a função de setar os comandos na coleção de comandos
 
 const { loadSlash } = require("./utils/command.js") //pegando a função dos slashs
 const { permission } = require("./utils/permissions.js") //pegando a função de verificar permissões
@@ -30,7 +30,7 @@ client.on("ready", () => {
 
 client.on('raw', async (p) => {
   reaction(p, client, react) 
-}
+})
 
 client.on("messageCreate", (message) => {
  
