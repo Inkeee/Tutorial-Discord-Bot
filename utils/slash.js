@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-function loadSlash(client) { 
+async function loadSlash(client) { 
 
   var slash = [] //array de comandos em slash 
   //você pode optar por salvar em uma coleção
